@@ -22,5 +22,6 @@ jobs:
           application_name: pma
           environment_name: Pma-env-1
           version_label: ${{ github.sha }}
+          existing_bucket_name: pma-application
           region: us-west-2
           deployment_package: deploy.zip
