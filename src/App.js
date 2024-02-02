@@ -3,24 +3,24 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 function App() {
-  const [clients, setClients] = useState([]);
+  const [pokeapi, setpokemon] = useState([]);
 
   useEffect(() => {
     axios
-      .get(
-        "http://pma-1-env.eba-v2xqi53u.us-west-2.elasticbeanstalk.com/api/clients"
-      )
+      .get("https://pokeapi.co/api/v2/pokemon?offset=20&limit=20")
       .then((response) => {
-        setClients(response.data);
+        setpokemon(response.data.results);
       });
-  });
+  }, []);
+
+  console.log(pokeapi);
 
   return (
     <div className="App">
       <h1>Hello World it works update 3 successful</h1>
-      {clients.map((client) => (
+      {pokeapi.map((pokemon) => (
         <div>
-          <p>{client.c_name}</p>
+          <p>{pokemon.name}</p>
         </div>
       ))}
     </div>
